@@ -1,27 +1,37 @@
 ---
-
+import { stats } from "./config";
 ---
 
 <section
   id="about"
   aria-labelledby="about-heading"
-  class="relative overflow-hidden bg-brand w-full px-8 py-24 md:py-32"
+  class="bg-brand relative w-full overflow-hidden px-8 py-24 md:py-50"
 >
   <!-- Radial gradient overlays -->
-  <div class="about-overlay-gradient pointer-events-none absolute inset-0" aria-hidden="true"></div>
+  <div
+    class="about-overlay-gradient pointer-events-none absolute inset-0"
+    aria-hidden="true"
+  >
+  </div>
   <!-- Subtle grid texture -->
-  <div class="about-overlay-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+  <div
+    class="about-overlay-grid pointer-events-none absolute inset-0"
+    aria-hidden="true"
+  >
+  </div>
 
   <div class="relative z-10 mx-auto max-w-5xl">
     <div class="flex flex-col gap-12 md:flex-row md:items-center md:gap-16">
       <div class="flex flex-col gap-6 md:flex-1">
-        <p class="text-accent flex items-center gap-3 text-xs font-medium tracking-widest uppercase">
+        <p
+          class="text-accent flex items-center gap-3 text-xs font-medium tracking-widest uppercase"
+        >
           <span class="bg-accent inline-block h-px w-8"></span>
           Denver Business Law
         </p>
         <h2
           id="about-heading"
-          class="font-display text-4xl font-bold tracking-tight text-white md:text-5xl"
+          class="font-display text-brand-fg text-4xl font-bold tracking-tight md:text-5xl"
         >
           About Mercer <span class="text-accent">&amp;</span> Aldine
         </h2>
@@ -37,57 +47,55 @@
         </p>
         <a
           href="/#call"
-          class="mt-2 inline-flex w-fit rounded-sm bg-accent px-8 py-3 text-sm font-medium uppercase tracking-[0.08em] text-white transition hover:opacity-90 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand focus:outline-none"
+          class="bg-accent text-accent-fg focus:ring-offset-brand tracking-button-wide mt-2 inline-flex w-fit rounded-sm px-8 py-3 text-sm font-medium uppercase transition hover:opacity-90 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none"
         >
           Schedule a Consultation
         </a>
       </div>
 
-      <dl
-        class="grid grid-cols-2 gap-4 md:flex-1"
-        aria-label="Firm highlights"
-      >
-        <div class="border-brand-fg/12 bg-brand-fg/6 flex flex-col gap-1 rounded-sm border p-6">
-          <dt class="text-brand-fg/60 text-sm">Years serving Denver</dt>
-          <dd class="font-display text-4xl font-bold text-accent">18+</dd>
-        </div>
-        <div class="border-brand-fg/12 bg-brand-fg/6 flex flex-col gap-1 rounded-sm border p-6">
-          <dt class="text-brand-fg/60 text-sm">Transactions closed</dt>
-          <dd class="font-display text-4xl font-bold text-accent">400+</dd>
-        </div>
-        <div class="border-brand-fg/12 bg-brand-fg/6 flex flex-col gap-1 rounded-sm border p-6">
-          <dt class="text-brand-fg/60 text-sm">Client retention rate</dt>
-          <dd class="font-display text-4xl font-bold text-accent">96%</dd>
-        </div>
-        <div class="border-brand-fg/12 bg-brand-fg/6 flex flex-col gap-1 rounded-sm border p-6">
-          <dt class="text-brand-fg/60 text-sm">Colorado licensed</dt>
-          <dd class="font-display text-4xl font-bold text-accent">100%</dd>
-        </div>
+      <dl class="grid grid-cols-2 gap-4 md:flex-1" aria-label="Firm highlights">
+        {
+          stats.map((s) => (
+            <div class="border-brand-fg/12 bg-brand-fg/6 flex flex-col gap-1 rounded-sm border p-6">
+              <dt class="text-brand-fg/70 text-sm">{s.label}</dt>
+              <dd class="font-display text-accent text-4xl font-bold">
+                {s.value}
+              </dd>
+            </div>
+          ))
+        }
       </dl>
     </div>
   </div>
 </section>
 
 <style>
+  /* about-overlay-* classes are decoration targets only — not semantic or JS hooks */
   .about-overlay-gradient {
-    background-image: radial-gradient(
+    background-image:
+      radial-gradient(
         ellipse at 80% 20%,
-        rgba(90, 140, 106, 0.15) 0%,
+        color-mix(in srgb, var(--color-brand-subtle) 15%, transparent) 0%,
         transparent 60%
       ),
       radial-gradient(
         ellipse at 20% 80%,
-        rgba(184, 150, 62, 0.08) 0%,
+        color-mix(in srgb, var(--color-ac) 8%, transparent) 0%,
         transparent 50%
       );
   }
 
   .about-overlay-grid {
-    background-image: linear-gradient(
-        rgba(245, 240, 232, 0.03) 1px,
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--color-brand-fg) 3%, transparent) 1px,
         transparent 1px
       ),
-      linear-gradient(90deg, rgba(245, 240, 232, 0.03) 1px, transparent 1px);
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--color-brand-fg) 3%, transparent) 1px,
+        transparent 1px
+      );
     background-size: 60px 60px;
   }
 </style>

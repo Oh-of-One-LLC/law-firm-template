@@ -16,6 +16,7 @@
 
   --text-stat: 2.75rem; /* stat card numbers */
   --tracking-button: 0.06em; /* uppercase button labels */
+  --tracking-button-wide: 0.08em; /* uppercase labels on brand-colored sections */
 }
 
 /* ============================================
