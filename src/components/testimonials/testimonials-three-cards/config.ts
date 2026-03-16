@@ -7,7 +7,7 @@ export const testimonials = [
   },
   {
     quote:
-      "We've used James for every legal need since we incorporated in 2015 — operating agreements, vendor contracts, a non-compete dispute. He's become an essential part of how we run the business.",
+      "We've used James for every legal need since we incorporated in 2015: operating agreements, vendor contracts, a non-compete dispute. He's become an essential part of how we run the business.",
     name: "Sofia Martinez",
     context: "Co-Founder, Altitude Marketing Group",
   },
