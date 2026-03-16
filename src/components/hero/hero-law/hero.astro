@@ -1,0 +1,126 @@
+---
+
+---
+
+<section
+  class="relative min-h-screen overflow-hidden"
+  style="background: var(--color-brand); padding-top: 5rem;"
+>
+  <!-- Radial gradient overlays -->
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background-image: radial-gradient(ellipse at 80% 20%, rgba(90,140,106,0.15) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(184,150,62,0.08) 0%, transparent 50%);"
+    aria-hidden="true"
+  ></div>
+  <!-- Subtle grid texture -->
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background-image: linear-gradient(rgba(245,240,232,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(245,240,232,0.03) 1px, transparent 1px); background-size: 60px 60px;"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-12 px-8 py-20 md:grid-cols-2 md:items-center md:py-28 lg:px-12">
+
+    <!-- Left: text content -->
+    <div class="flex flex-col gap-6 hero-content">
+      <p
+        class="hero-eyebrow flex items-center gap-3 text-xs font-medium tracking-widest uppercase"
+        style="color: var(--color-ac);"
+      >
+        <span class="inline-block h-px w-8" style="background: var(--color-ac);"></span>
+        Business Law &middot; Denver, Colorado
+      </p>
+
+      <h1
+        class="hero-heading text-4xl font-bold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl"
+        style="font-family: var(--font-display);"
+      >
+        Counsel built for <em style="font-style: italic; color: var(--color-ac);">business,</em> not bureaucracy.
+      </h1>
+
+      <p
+        class="hero-desc max-w-lg text-base leading-relaxed font-light md:text-lg"
+        style="color: rgba(245,240,232,0.7);"
+      >
+        Mercer &amp; Aldine advises Denver businesses through their most critical
+        legal decisions — from formation and contracts to M&amp;A and dispute
+        resolution. Straightforward counsel. No billable-hour surprises.
+      </p>
+
+      <div class="hero-actions flex flex-wrap items-center gap-4 pt-2">
+        <a
+          href="/#call"
+          class="rounded-sm px-8 py-4 text-sm font-medium tracking-widest uppercase text-white transition hover:opacity-90 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none"
+          style="background: var(--color-ac); letter-spacing: 0.06em;"
+        >
+          Schedule a Consultation
+        </a>
+        <a
+          href="/#services"
+          class="flex items-center gap-2 text-sm font-light uppercase tracking-widest transition focus:ring-2 focus:ring-white focus:outline-none"
+          style="color: rgba(245,240,232,0.7); letter-spacing: 0.06em;"
+          onmouseover="this.style.color='rgba(245,240,232,1)'"
+          onmouseout="this.style.color='rgba(245,240,232,0.7)'"
+        >
+          Our Practice Areas <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: stat card -->
+    <div class="hero-card hidden justify-center md:flex">
+      <div
+        class="w-full max-w-sm rounded-sm p-12"
+        style="background: rgba(245,240,232,0.06); border: 1px solid rgba(245,240,232,0.12); backdrop-filter: blur(8px);"
+      >
+        <div
+          class="mb-8 pb-8"
+          style="border-bottom: 1px solid rgba(245,240,232,0.1);"
+        >
+          <p
+            class="mb-2 leading-none"
+            style="font-family: var(--font-display); font-size: 2.75rem; font-weight: 600; color: var(--color-ac);"
+          >18+</p>
+          <p class="text-sm font-light" style="color: rgba(245,240,232,0.6); letter-spacing: 0.04em;">
+            Years serving Denver businesses
+          </p>
+        </div>
+        <div
+          class="mb-8 pb-8"
+          style="border-bottom: 1px solid rgba(245,240,232,0.1);"
+        >
+          <p
+            class="mb-2 leading-none"
+            style="font-family: var(--font-display); font-size: 2.75rem; font-weight: 600; color: var(--color-ac);"
+          >400+</p>
+          <p class="text-sm font-light" style="color: rgba(245,240,232,0.6); letter-spacing: 0.04em;">
+            Transactions closed
+          </p>
+        </div>
+        <div>
+          <p
+            class="mb-2 leading-none"
+            style="font-family: var(--font-display); font-size: 2.75rem; font-weight: 600; color: var(--color-ac);"
+          >96%</p>
+          <p class="text-sm font-light" style="color: rgba(245,240,232,0.6); letter-spacing: 0.04em;">
+            Client retention rate
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow  { animation: fadeUp 0.6s 0s   ease both; }
+  .hero-heading  { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-desc     { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-actions  { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-card     { animation: fadeUp 0.6s 0.4s ease both; }
+</style>

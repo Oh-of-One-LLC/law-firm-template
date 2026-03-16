@@ -1,0 +1,21 @@
+---
+import Hero from "../components/hero/hero-law/hero.astro";
+import About from "../components/about/about-1.astro";
+import Services from "../components/services/services-1.astro";
+import Attorneys from "../components/attorneys/attorneys.astro";
+import Testimonials from "../components/testimonials/testimonials-three-cards/testimonials.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <Fragment slot="main">
+    <Hero />
+    <About />
+    <Services />
+    <Attorneys />
+    <Testimonials
+      heading="What our clients say"
+      subtitle="Businesses across Denver trust Mercer & Aldine for their most important legal decisions."
+    />
+  </Fragment>
+</BaseLayout>

@@ -1,0 +1,251 @@
+---
+import {
+  PARTY_SIZES,
+  TIME_SLOTS,
+  EYEBROW,
+  TITLE,
+  SUBTITLE,
+  URL,
+} from "./config";
+---
+
+<section
+  id="reservations"
+  aria-labelledby="reservations-heading"
+  class="bg-background text-text w-full px-8 py-24 md:py-32"
+>
+  <div class="mx-auto max-w-xl">
+    <div class="mb-10 flex flex-col gap-3">
+      <p class="text-accent text-sm font-semibold tracking-widest uppercase">
+        {EYEBROW}
+      </p>
+      <h2
+        id="reservations-heading"
+        class="text-4xl font-bold tracking-tight md:text-5xl"
+      >
+        {TITLE}
+      </h2>
+      <p class="text-text-muted mt-1 text-lg">
+        {SUBTITLE}
+      </p>
+    </div>
+
+    <form
+      id="reservation-form"
+      novalidate
+      class="flex flex-col gap-5"
+      aria-label="Reservation form"
+    >
+      <!-- Name -->
+      <div class="flex flex-col gap-1.5">
+        <label for="res-name" class="text-sm font-medium">Full name</label>
+        <input
+          id="res-name"
+          name="name"
+          type="text"
+          required
+          autocomplete="name"
+          placeholder="Jane Smith"
+          class="bg-raised border-border focus:border-accent focus:ring-accent rounded-lg border px-4 py-3 text-base transition focus:ring-1 focus:outline-none"
+        />
+        <p id="res-name-error" class="hidden text-sm text-red-500" role="alert">
+          Please enter your name.
+        </p>
+      </div>
+
+      <!-- Party size + Date (side by side on wider screens) -->
+      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <!-- Party size -->
+        <div class="flex flex-col gap-1.5">
+          <label for="res-party" class="text-sm font-medium">Party size</label>
+          <select
+            id="res-party"
+            name="partySize"
+            required
+            class="bg-raised border-border focus:border-accent focus:ring-accent rounded-lg border px-4 py-3 text-base transition focus:ring-1 focus:outline-none"
+          >
+            <option value="" disabled selected>Select size</option>
+            {
+              PARTY_SIZES.map((n) => (
+                <option value={n}>
+                  {n} {n === 1 ? "guest" : "guests"}
+                </option>
+              ))
+            }
+            <option value="large">9+ guests</option>
+          </select>
+          <p
+            id="res-party-error"
+            class="hidden text-sm text-red-500"
+            role="alert"
+          >
+            Please select a party size.
+          </p>
+        </div>
+
+        <!-- Date -->
+        <div class="flex flex-col gap-1.5">
+          <label for="res-date" class="text-sm font-medium">Date</label>
+          <input
+            id="res-date"
+            name="date"
+            type="date"
+            required
+            class="bg-raised border-border focus:border-accent focus:ring-accent rounded-lg border px-4 py-3 text-base transition focus:ring-1 focus:outline-none"
+          />
+          <p
+            id="res-date-error"
+            class="hidden text-sm text-red-500"
+            role="alert"
+          >
+            Please pick a date.
+          </p>
+        </div>
+      </div>
+
+      <!-- Time -->
+      <div class="flex flex-col gap-1.5">
+        <label for="res-time" class="text-sm font-medium">Time</label>
+        <select
+          id="res-time"
+          name="time"
+          required
+          class="bg-raised border-border focus:border-accent focus:ring-accent rounded-lg border px-4 py-3 text-base transition focus:ring-1 focus:outline-none"
+        >
+          <option value="" disabled selected>Select a time</option>
+          {TIME_SLOTS.map((t) => <option value={t}>{t}</option>)}
+        </select>
+        <p id="res-time-error" class="hidden text-sm text-red-500" role="alert">
+          Please select a time.
+        </p>
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        class="bg-accent text-accent-fg focus:ring-accent focus:ring-offset-background mt-2 rounded-lg px-8 py-3 text-lg font-semibold transition hover:opacity-90 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+      >
+        Request reservation
+      </button>
+
+      <!-- Success / error toast -->
+      <p
+        id="res-status"
+        class="hidden text-center text-sm font-medium"
+        role="status"
+      >
+      </p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("reservation-form") as HTMLFormElement;
+  const status = document.getElementById("res-status")!;
+
+  function sanitizeName(el: HTMLInputElement): void {
+    el.value = el.value.trim().replace(/\s+/g, " ");
+  }
+
+  function getSelectAllowlist(selectId: string): Set<string> {
+    const select = document.getElementById(selectId) as HTMLSelectElement;
+    const values = new Set<string>();
+    for (const opt of select.options) {
+      if (opt.value !== "") values.add(opt.value);
+    }
+    return values;
+  }
+
+  function validateDate(value: string): string | null {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return "Please pick a valid date.";
+    const selected = new Date(value + "T00:00:00");
+    if (isNaN(selected.getTime())) return "Please pick a valid date.";
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (selected < today) return "Date must be today or in the future.";
+    return null;
+  }
+
+  function validate(): boolean {
+    let valid = true;
+
+    // Name
+    const nameEl = document.getElementById("res-name") as HTMLInputElement;
+    const nameErr = document.getElementById("res-name-error")!;
+    sanitizeName(nameEl);
+    const nameVal = nameEl.value;
+    const namePattern = /^[\p{L}\p{M}\s\-'.]+$/u;
+    let nameMsg = "";
+    if (!nameVal) {
+      nameMsg = "Please enter your name.";
+    } else if (nameVal.length > 100) {
+      nameMsg = "Name must be 100 characters or fewer.";
+    } else if (!namePattern.test(nameVal)) {
+      nameMsg = "Name contains invalid characters.";
+    }
+    if (nameMsg) {
+      nameErr.textContent = nameMsg;
+      nameErr.classList.remove("hidden");
+      valid = false;
+    } else {
+      nameErr.classList.add("hidden");
+    }
+
+    // Party size
+    const partyEl = document.getElementById("res-party") as HTMLSelectElement;
+    const partyErr = document.getElementById("res-party-error")!;
+    if (!getSelectAllowlist("res-party").has(partyEl.value)) {
+      partyErr.textContent = "Please select a party size.";
+      partyErr.classList.remove("hidden");
+      valid = false;
+    } else {
+      partyErr.classList.add("hidden");
+    }
+
+    // Date
+    const dateEl = document.getElementById("res-date") as HTMLInputElement;
+    const dateErr = document.getElementById("res-date-error")!;
+    const dateMsg = validateDate(dateEl.value);
+    if (dateMsg) {
+      dateErr.textContent = dateMsg;
+      dateErr.classList.remove("hidden");
+      valid = false;
+    } else {
+      dateErr.classList.add("hidden");
+    }
+
+    // Time
+    const timeEl = document.getElementById("res-time") as HTMLSelectElement;
+    const timeErr = document.getElementById("res-time-error")!;
+    if (!getSelectAllowlist("res-time").has(timeEl.value)) {
+      timeErr.textContent = "Please select a time.";
+      timeErr.classList.remove("hidden");
+      valid = false;
+    } else {
+      timeErr.classList.add("hidden");
+    }
+
+    return valid;
+  }
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    // Swap button to loading state
+    const btn = form.querySelector("button[type=submit]") as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+
+    // Simulate submission — wire up a real endpoint here using the URL var
+    setTimeout(() => {
+      form.reset();
+      btn.disabled = false;
+      btn.textContent = "Request reservation";
+      status.textContent =
+        "Reservation request sent! We'll confirm by phone shortly.";
+      status.classList.remove("hidden", "text-red-500");
+      status.classList.add("text-accent");
+    }, 800);
+  });
+</script>

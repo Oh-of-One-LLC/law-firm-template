@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* ============================================
+   Static Brand Colors
+   Forest green palette for law firm identity.
+   Used for primary sections: header, hero, footer.
+   ============================================ */
+@theme {
+  --color-brand: #2c4a35; /* Forest green */
+  --color-brand-subtle: #3d6b4f; /* Green mid — nested brand surfaces */
+  --color-brand-fg: #f5f0e8; /* Cream — text on brand bg */
+  --color-brand-fg-muted: #a8bfb0; /* Muted sage — supporting text on brand bg */
+
+  --font-display: "Playfair Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+}
+
+/* ============================================
+   Semantic Colors — Light Mode (default)
+   ============================================ */
+:root {
+  --color-bg: #f5f0e8; /* Cream page background */
+  --color-bg-surface: #ede6d6; /* Cream dark — cards, panels */
+  --color-bg-raised: #e8f0ea; /* Green pale — inputs, hover states */
+
+  --color-tx: #1a1a1a; /* Primary text */
+  --color-tx-muted: #5c5c4a; /* Supporting text */
+  --color-tx-subtle: #7a7a6a; /* Placeholders, captions */
+
+  --color-bd: #ddd6c8; /* Default border */
+  --color-bd-strong: #cfc6b4; /* Emphasized border */
+
+  --color-ac: #b8963e; /* Gold accent — CTAs, links */
+  --color-ac-fg: #ffffff; /* Text on accent bg */
+}
+
+/* ============================================
+   Semantic Colors — Dark Mode
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1a2a1f;
+    --color-bg-surface: #223028;
+    --color-bg-raised: #2a3d30;
+
+    --color-tx: #f5f0e8;
+    --color-tx-muted: #a8bfb0;
+    --color-tx-subtle: #7a9e88;
+
+    --color-bd: #2a3d30;
+    --color-bd-strong: #3a5542;
+
+    --color-ac: #c9a84c;
+    --color-ac-fg: #1a2a1f;
+  }
+}
+
+/* ============================================
+   Tailwind Utility Mapping
+   Exposes semantic colors as Tailwind classes:
+   bg-background, bg-surface, bg-raised,
+   text-text, text-text-muted, text-text-subtle,
+   border-border, border-border-strong,
+   bg-accent, text-accent-fg
+   ============================================ */
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-surface: var(--color-bg-surface);
+  --color-raised: var(--color-bg-raised);
+
+  --color-text: var(--color-tx);
+  --color-text-muted: var(--color-tx-muted);
+  --color-text-subtle: var(--color-tx-subtle);
+
+  --color-border: var(--color-bd);
+  --color-border-strong: var(--color-bd-strong);
+
+  --color-accent: var(--color-ac);
+  --color-accent-fg: var(--color-ac-fg);
+}

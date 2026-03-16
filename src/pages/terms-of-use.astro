@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { COMPANY_NAME as companyName } from "../config";
+
+const privacyEmail = "privacy@smithplumbing.com";
+---
+
+<BaseLayout pageTitle="Terms of Use">
+  <section
+    slot="main"
+    class="mx-auto flex max-w-5xl flex-col items-center px-8 py-12 text-center"
+  >
+    <h1 class="text-center text-4xl font-bold tracking-tight md:text-6xl">
+      Website Terms and Conditions
+    </h1>
+    <p class="pt-12">
+      Welcome to {companyName}'s website (the “Site”), operated by
+      {companyName} (“we” “our”). In order to access the Site, you agree to be bound
+      by the following terms and conditions ("Terms") in full. Please continue to
+      access and use the Site only if you accept the Terms.
+    </p>
+
+    <h2 class="pt-12 pb-2 text-xl">
+      1. Cookies and Personal Information—See Separate Privacy Policy
+    </h2>
+    <p>We do not use cookies on the Site.</p>
+    <p class="">
+      We collect personal information (name and email) when you submit the “Get
+      a Free Quote” form (“request a quote”).
+    </p>
+    <p class="">
+      Please refer to our Privacy Policy to learn more about what information we
+      collect, how we use it, and how we protect it. A link to the Privacy
+      Policy is included in the footer of every page on the Site.
+    </p>
+
+    <h2 class="pt-12 pb-2 text-xl">2. Acceptable Uses</h2>
+    <p class="">You must be age 18 or older to request a quote.</p>
+
+    <h2 class="pt-12 pb-2 text-xl">3. Products and Prices</h2>
+    <p class="">
+      We strive to maintain accurate service information and current prices on
+      the Site. But we make no representation as to the accuracy of the
+      information on the Site. We reserve the right to change the services
+      offered for sale and service prices at our discretion.
+    </p>
+
+    <h2 class="pt-12 pb-2 text-xl">4. Intellectual Property</h2>
+    <p class="">
+      The Site and all content on it are the copyrighted property of Oh of One
+      Enterprises, LLC and may not be used by others for commercial purposes
+      without our written permission.
+    </p>
+
+    <h2 class="pt-12 pb-2 text-xl">5. Governing Law</h2>
+    <p class="">These Terms are governed by the laws of Colorado.</p>
+
+    <h2 class="pt-12 pb-2 text-xl">6. Changes to Terms</h2>
+    <p class="">
+      We may change these Terms at any time without prior notice. Changes will
+      be effective when they are posted to the Site. Your continued use of the
+      Site after the posting of changes indicates your acceptance of the revised
+      Terms.
+    </p>
+
+    <h2 class="pt-12 pb-2 text-xl">7. Contact Us</h2>
+    <p class="">
+      If you have any questions about these Terms, please contact us at
+      <span class="not-italic" role="contentinfo">
+        <a href={`mailto:${privacyEmail}`} class="underline">{privacyEmail}</a>.
+      </span>
+    </p>
+  </section>
+</BaseLayout>

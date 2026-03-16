@@ -1,0 +1,289 @@
+---
+import { EMAIL, ADDRESS } from "../../config";
+const { companyName, phone } = Astro.props;
+---
+
+<footer
+  id="call"
+  class="bg-brand text-brand-fg w-full px-8 py-16"
+  aria-labelledby="footer-heading"
+>
+  <div class="mx-auto max-w-5xl">
+    <div class="flex flex-col gap-12 md:flex-row md:gap-16">
+      <!-- Company info + contact details -->
+      <div class="flex flex-col gap-6 md:w-72 md:shrink-0">
+        <div class="flex flex-col gap-2">
+          <h2
+            id="footer-heading"
+            class="text-2xl font-bold"
+            style="font-family: var(--font-display);"
+          >
+            {companyName.split(" & ")[0]}
+            <span style="color: var(--color-ac);"> &amp; </span>
+            {companyName.split(" & ")[1]}
+          </h2>
+          <p class="text-brand-fg-muted leading-relaxed font-light">
+            Every engagement begins with a no-obligation consultation. Tell us
+            what you're working on and we'll tell you honestly whether and how
+            we can help.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0 opacity-60" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span class="text-brand-fg-muted text-sm font-light">{ADDRESS}</span>
+          </div>
+          <a
+            href={`tel:${phone}`}
+            class="flex items-center gap-3 transition hover:opacity-100 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand focus:outline-none"
+            aria-label={`Call us at ${phone}`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-60 shrink-0" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span class="text-brand-fg-muted text-sm font-light">{phone}</span>
+          </a>
+          <div class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-60 shrink-0" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span class="text-brand-fg-muted text-sm font-light">{EMAIL}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <div class="flex flex-1 flex-col gap-6">
+        <h3 class="text-xl font-bold" style="font-family: var(--font-display);">
+          Request a Consultation
+        </h3>
+        <form
+          method="POST"
+          action="#"
+          class="flex flex-col gap-4"
+          aria-label="Contact form"
+        >
+          <div class="flex flex-col gap-4 sm:flex-row">
+            <div class="flex flex-1 flex-col gap-1">
+              <label for="contact-first" class="text-xs font-medium tracking-widest uppercase opacity-80">
+                First Name <span aria-hidden="true" class="text-red-400">*</span>
+              </label>
+              <input
+                type="text"
+                id="contact-first"
+                name="first_name"
+                autocomplete="given-name"
+                required
+                aria-required="true"
+                placeholder="James"
+                class="text-brand-fg rounded-sm border border-white/15 bg-white/8 px-4 py-2.5 text-sm font-light placeholder-white/30 transition focus:border-transparent focus:ring-2 focus:ring-white focus:outline-none"
+              />
+            </div>
+            <div class="flex flex-1 flex-col gap-1">
+              <label for="contact-last" class="text-xs font-medium tracking-widest uppercase opacity-80">
+                Last Name <span aria-hidden="true" class="text-red-400">*</span>
+              </label>
+              <input
+                type="text"
+                id="contact-last"
+                name="last_name"
+                autocomplete="family-name"
+                required
+                aria-required="true"
+                placeholder="Mercer"
+                class="text-brand-fg rounded-sm border border-white/15 bg-white/8 px-4 py-2.5 text-sm font-light placeholder-white/30 transition focus:border-transparent focus:ring-2 focus:ring-white focus:outline-none"
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="contact-company" class="text-xs font-medium tracking-widest uppercase opacity-80">
+              Company
+            </label>
+            <input
+              type="text"
+              id="contact-company"
+              name="company"
+              autocomplete="organization"
+              placeholder="Your business name"
+              class="text-brand-fg rounded-sm border border-white/15 bg-white/8 px-4 py-2.5 text-sm font-light placeholder-white/30 transition focus:border-transparent focus:ring-2 focus:ring-white focus:outline-none"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="contact-email" class="text-xs font-medium tracking-widest uppercase opacity-80">
+              Email <span aria-hidden="true" class="text-red-400">*</span>
+            </label>
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              autocomplete="email"
+              required
+              aria-required="true"
+              placeholder="you@company.com"
+              class="text-brand-fg rounded-sm border border-white/15 bg-white/8 px-4 py-2.5 text-sm font-light placeholder-white/30 transition focus:border-transparent focus:ring-2 focus:ring-white focus:outline-none"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="contact-matter" class="text-xs font-medium tracking-widest uppercase opacity-80">
+              Matter Type
+            </label>
+            <select
+              id="contact-matter"
+              name="matter_type"
+              class="text-brand-fg rounded-sm border border-white/15 bg-brand px-4 py-2.5 text-sm font-light transition focus:border-transparent focus:ring-2 focus:ring-white focus:outline-none"
+            >
+              <option value="">Select a practice area</option>
+              <option>Business Formation &amp; Structure</option>
+              <option>Contracts &amp; Commercial Agreements</option>
+              <option>Mergers &amp; Acquisitions</option>
+              <option>Employment Law</option>
+              <option>Intellectual Property</option>
+              <option>Business Dispute Resolution</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="contact-message" class="text-xs font-medium tracking-widest uppercase opacity-80">
+              Tell us about your matter <span aria-hidden="true" class="text-red-400">*</span>
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="4"
+              required
+              aria-required="true"
+              placeholder="Brief description of what you're working on..."
+              class="text-brand-fg resize-y rounded-sm border border-white/15 bg-white/8 px-4 py-2.5 text-sm font-light placeholder-white/30 transition focus:border-transparent focus:ring-2 focus:ring-white focus:outline-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="mt-2 w-full rounded-sm px-8 py-3 text-sm font-medium tracking-widest uppercase transition hover:opacity-90 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand focus:outline-none sm:w-fit"
+            style="background: var(--color-ac); color: #fff;"
+          >
+            Request Consultation
+          </button>
+
+          <p class="text-brand-fg-muted mt-1 text-xs font-light">
+            By submitting this form, you agree to our <a
+              href="/terms-of-use"
+              class="italic underline-offset-2 transition hover:opacity-100 hover:underline focus:ring-2 focus:ring-white focus:ring-offset-brand focus:outline-none"
+              >Terms of Use</a
+            > and <a
+              href="/privacy-policy"
+              class="italic underline-offset-2 transition hover:opacity-100 hover:underline focus:ring-2 focus:ring-white focus:ring-offset-brand focus:outline-none"
+              >Privacy Policy</a
+            >.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-8 sm:flex-row sm:justify-between"
+    >
+      <p class="text-brand-fg-muted text-center text-sm font-light">
+        &copy; <span id="footer-year"></span>
+        {companyName}, PLLC &middot; Denver, Colorado
+      </p>
+      <ul class="flex flex-wrap gap-6" role="list">
+        <li>
+          <a
+            href="/privacy-policy"
+            class="text-brand-fg-muted text-sm transition hover:text-brand-fg focus:ring-2 focus:ring-white focus:ring-offset-brand focus:outline-none"
+            >Privacy Policy</a
+          >
+        </li>
+        <li>
+          <a
+            href="/terms-of-use"
+            class="text-brand-fg-muted text-sm transition hover:text-brand-fg focus:ring-2 focus:ring-white focus:ring-offset-brand focus:outline-none"
+            >Terms of Use</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast notification -->
+<div
+  id="contact-toast"
+  role="status"
+  aria-live="polite"
+  aria-atomic="true"
+  class="fixed right-4 bottom-4 z-50 flex translate-y-4 items-center gap-3 rounded-sm px-4 py-3 text-sm font-medium opacity-0 shadow-lg transition-all duration-300"
+>
+  <span id="contact-toast-icon" aria-hidden="true"></span>
+  <span id="contact-toast-message"></span>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const yearSpan = document.getElementById("footer-year");
+    if (yearSpan) {
+      yearSpan.textContent = String(new Date().getFullYear());
+    }
+
+    const form = document.querySelector<HTMLFormElement>(
+      'form[aria-label="Contact form"]',
+    );
+    const toast = document.getElementById("contact-toast")!;
+    const toastMessage = document.getElementById("contact-toast-message")!;
+    const toastIcon = document.getElementById("contact-toast-icon")!;
+    let dismissTimer: ReturnType<typeof setTimeout>;
+
+    function showToast(success: boolean) {
+      clearTimeout(dismissTimer);
+
+      if (success) {
+        toast.className = toast.className
+          .replace(/bg-\S+/g, "")
+          .replace(/text-\S+/g, "")
+          .trim();
+        toast.classList.add(
+          "bg-zinc-900",
+          "text-white",
+          "border",
+          "border-zinc-700",
+        );
+        toastIcon.textContent = "✓";
+        toastMessage.textContent = "Message sent! We'll be in touch soon.";
+      } else {
+        toast.className = toast.className
+          .replace(/bg-\S+/g, "")
+          .replace(/text-\S+/g, "")
+          .trim();
+        toast.classList.add(
+          "bg-red-900",
+          "text-white",
+          "border",
+          "border-red-700",
+        );
+        toastIcon.textContent = "✕";
+        toastMessage.textContent = "Something went wrong. Please try again.";
+      }
+
+      toast.classList.remove("opacity-0", "translate-y-4");
+      toast.classList.add("opacity-100", "translate-y-0");
+
+      dismissTimer = setTimeout(() => {
+        toast.classList.remove("opacity-100", "translate-y-0");
+        toast.classList.add("opacity-0", "translate-y-4");
+      }, 4000);
+    }
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      showToast(true);
+    });
+  });
+</script>
