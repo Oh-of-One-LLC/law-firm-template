@@ -35,27 +35,6 @@
 }
 
 /* ============================================
-   Semantic Colors — Dark Mode
-   ============================================ */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #1a2a1f;
-    --color-bg-surface: #223028;
-    --color-bg-raised: #2a3d30;
-
-    --color-tx: #f5f0e8;
-    --color-tx-muted: #a8bfb0;
-    --color-tx-subtle: #7a9e88;
-
-    --color-bd: #2a3d30;
-    --color-bd-strong: #3a5542;
-
-    --color-ac: #c9a84c;
-    --color-ac-fg: #1a2a1f;
-  }
-}
-
-/* ============================================
    Tailwind Utility Mapping
    Exposes semantic colors as Tailwind classes:
    bg-background, bg-surface, bg-raised,
