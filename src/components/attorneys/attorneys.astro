@@ -1,91 +1,60 @@
 ---
-const attorneys = [
-  {
-    initials: "JM",
-    name: "James Mercer",
-    title: "Founding Partner",
-    bio: "18 years advising Colorado businesses through formation, growth, and exit. Former in-house counsel at two Denver-based technology companies.",
-  },
-  {
-    initials: "CA",
-    name: "Claire Aldine",
-    title: "Founding Partner",
-    bio: "Specializes in M&A and commercial contracts. Previously with a top-10 national firm before co-founding Mercer & Aldine in 2008.",
-  },
-  {
-    initials: "DP",
-    name: "David Park",
-    title: "Associate Attorney",
-    bio: "Focuses on employment law and intellectual property. University of Colorado Law, 2018. Fluent in Korean and Mandarin.",
-  },
-];
+import { attorneys } from "./config";
 ---
 
 <section
   id="attorneys"
   aria-labelledby="attorneys-heading"
-  class="relative w-full overflow-hidden px-8 py-24 md:py-32"
-  style="background: var(--color-brand);"
+  class="bg-brand relative w-full overflow-hidden px-8 py-24 md:py-32"
 >
-  <!-- Subtle decorative gradient -->
+  <!-- Decorative overlays — not semantic or JS hooks -->
   <div
-    class="pointer-events-none absolute -top-48 -right-48 h-[600px] w-[600px] rounded-full"
-    style="background: radial-gradient(circle, rgba(90,140,106,0.15) 0%, transparent 70%);"
+    class="atty-overlay-gradient pointer-events-none absolute inset-0"
     aria-hidden="true"
-  ></div>
+  >
+  </div>
+  <div
+    class="atty-overlay-grid pointer-events-none absolute inset-0"
+    aria-hidden="true"
+  >
+  </div>
 
-  <div class="relative mx-auto max-w-5xl">
+  <div class="relative z-10 mx-auto max-w-5xl">
     <p
-      class="mb-4 flex items-center gap-3 text-xs font-medium tracking-widest uppercase"
-      style="color: var(--color-ac);"
+      class="text-accent mb-4 flex items-center gap-3 text-xs font-medium tracking-widest uppercase"
     >
-      <span class="inline-block h-px w-8" style="background: var(--color-ac);"></span>
+      <span class="bg-accent inline-block h-px w-8"></span>
       The Team
     </p>
     <h2
       id="attorneys-heading"
-      class="mb-16 text-4xl font-bold tracking-tight md:text-5xl"
-      style="font-family: var(--font-display); color: var(--color-brand-fg);"
+      class="font-display text-brand-fg mb-16 text-4xl font-bold tracking-tight md:text-5xl"
     >
-      Our <em style="font-style: italic; color: var(--color-ac);">attorneys</em>
+      Our <em class="text-accent">attorneys</em>
     </h2>
 
-    <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" role="list">
+    <ul
+      class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+      role="list"
+    >
       {
         attorneys.map((attorney) => (
           <li class="flex flex-col">
-            <!-- Photo placeholder -->
-            <div
-              class="mb-6 w-full overflow-hidden rounded-sm"
-              style="aspect-ratio: 3/4; background: linear-gradient(160deg, var(--color-brand-subtle) 0%, var(--color-brand) 100%);"
-              aria-hidden="true"
-            >
+            <div class="atty-photo mb-6 rounded-sm" aria-hidden="true">
               <div class="flex h-full items-center justify-center">
-                <span
-                  class="select-none"
-                  style="font-family: var(--font-display); font-size: 4rem; font-weight: 400; font-style: italic; color: rgba(245,240,232,0.2);"
-                >
+                <span class="font-display text-brand-fg/20 text-[4rem] font-normal italic select-none">
                   {attorney.initials}
                 </span>
               </div>
             </div>
 
-            <p
-              class="mb-1 text-xl font-semibold"
-              style="font-family: var(--font-display); color: var(--color-brand-fg);"
-            >
+            <h3 class="font-display text-brand-fg mb-1 text-xl font-semibold">
               {attorney.name}
-            </p>
-            <p
-              class="mb-4 text-xs font-medium tracking-widest uppercase"
-              style="color: var(--color-ac);"
-            >
+            </h3>
+            <p class="text-accent mb-4 text-xs font-medium tracking-widest uppercase">
               {attorney.title}
             </p>
-            <p
-              class="text-sm leading-relaxed font-light"
-              style="color: var(--color-brand-fg-muted);"
-            >
+            <p class="text-brand-fg/70 text-sm leading-relaxed font-light">
               {attorney.bio}
             </p>
           </li>
@@ -94,3 +63,43 @@ const attorneys = [
     </ul>
   </div>
 </section>
+
+<style>
+  /* atty-overlay-* and atty-photo are decoration targets only — not semantic or JS hooks */
+  .atty-overlay-gradient {
+    background-image:
+      radial-gradient(
+        ellipse at 80% 20%,
+        color-mix(in srgb, var(--color-brand-subtle) 15%, transparent) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at 20% 80%,
+        color-mix(in srgb, var(--color-ac) 8%, transparent) 0%,
+        transparent 50%
+      );
+  }
+
+  .atty-overlay-grid {
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--color-brand-fg) 3%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--color-brand-fg) 3%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 60px 60px;
+  }
+
+  .atty-photo {
+    aspect-ratio: 3/4;
+    background: linear-gradient(
+      160deg,
+      var(--color-brand-subtle) 0%,
+      var(--color-brand) 100%
+    );
+  }
+</style>
