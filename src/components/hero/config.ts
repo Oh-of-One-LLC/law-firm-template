@@ -1,0 +1,7 @@
+const stats = [
+  { value: "18+", label: "Years serving Denver businesses" },
+  { value: "400+", label: "Transactions closed" },
+  { value: "96%", label: "Client retention rate" },
+];
+
+export { stats };

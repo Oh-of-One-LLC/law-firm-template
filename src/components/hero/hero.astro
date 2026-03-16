@@ -1,4 +1,10 @@
-<section class="bg-surface relative min-h-screen overflow-hidden pt-12">
+---
+import { stats } from "./config";
+---
+
+<section class="bg-surface relative min-h-screen overflow-hidden md:pt-12">
+  <!-- pt-12 clears the fixed header; the inner grid owns the remaining vertical padding -->
+  <!-- z-10: keeps text above any background decoration placed inside the section -->
   <div
     class="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-12 px-8 py-20 md:grid-cols-2 md:items-center md:py-28 lg:px-12"
   >
@@ -14,7 +20,7 @@
       <h1
         class="hero-heading font-display text-text text-4xl leading-tight font-bold tracking-tight md:text-5xl lg:text-6xl"
       >
-        Counsel built for <em class="text-accent italic">business,</em>
+        Counsel built for <em class="text-accent">business,</em>
         not bureaucracy.
       </h1>
 
@@ -29,13 +35,13 @@
       <div class="hero-actions flex flex-wrap items-center gap-4 pt-2">
         <a
           href="/#call"
-          class="bg-brand text-brand-fg focus:ring-brand focus:ring-offset-surface rounded-sm px-8 py-4 text-sm font-medium tracking-[0.06em] uppercase transition hover:opacity-90 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+          class="bg-brand text-brand-fg focus:ring-brand focus:ring-offset-surface tracking-button rounded-sm px-8 py-4 text-sm font-medium uppercase transition hover:opacity-90 focus:ring-2 focus:ring-offset-2 focus:outline-none"
         >
           Schedule a Consultation
         </a>
         <a
           href="/#services"
-          class="text-text-muted hover:text-text focus:ring-brand flex items-center gap-2 text-sm font-light tracking-[0.06em] uppercase transition focus:ring-2 focus:outline-none"
+          class="text-text-muted hover:text-text focus:ring-brand tracking-button flex items-center gap-2 text-sm font-light uppercase transition focus:ring-2 focus:outline-none"
         >
           Our Practice Areas <span aria-hidden="true">&rarr;</span>
         </a>
@@ -45,44 +51,32 @@
     <!-- Right: stat card -->
     <div class="hero-card hidden justify-center md:flex">
       <div
-        class="border-border bg-background w-full max-w-sm rounded-sm border p-12"
+        class="border-border bg-background w-full max-w-sm rounded-sm border p-12 shadow-lg"
       >
-        <div class="border-border mb-8 border-b pb-8">
-          <p
-            class="font-display text-accent mb-2 text-[2.75rem] leading-none font-semibold"
-          >
-            18+
-          </p>
-          <p class="text-text-muted text-sm font-light tracking-[0.04em]">
-            Years serving Denver businesses
-          </p>
-        </div>
-        <div class="border-border mb-8 border-b pb-8">
-          <p
-            class="font-display text-accent mb-2 text-[2.75rem] leading-none font-semibold"
-          >
-            400+
-          </p>
-          <p class="text-text-muted text-sm font-light tracking-[0.04em]">
-            Transactions closed
-          </p>
-        </div>
-        <div>
-          <p
-            class="font-display text-accent mb-2 text-[2.75rem] leading-none font-semibold"
-          >
-            96%
-          </p>
-          <p class="text-text-muted text-sm font-light tracking-[0.04em]">
-            Client retention rate
-          </p>
-        </div>
+        {
+          stats.map((s, i) => (
+            <div
+              class:list={[
+                "pb-8",
+                i < stats.length - 1 && "border-border mb-8 border-b",
+              ]}
+            >
+              <p class="font-display text-accent text-stat mb-2 leading-none font-semibold">
+                {s.value}
+              </p>
+              <p class="text-text-muted text-sm font-light tracking-[0.04em]">
+                {s.label}
+              </p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
 </section>
 
 <style>
+  /* hero-* classes are animation targets only — not semantic or JS hooks */
   @keyframes fadeUp {
     from {
       opacity: 0;

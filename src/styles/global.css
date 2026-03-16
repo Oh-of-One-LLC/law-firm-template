@@ -13,6 +13,9 @@
 
   --font-display: "Playfair Display", serif;
   --font-sans: "DM Sans", sans-serif;
+
+  --text-stat: 2.75rem; /* stat card numbers */
+  --tracking-button: 0.06em; /* uppercase button labels */
 }
 
 /* ============================================
@@ -30,7 +33,7 @@
   --color-bd: #ddd6c8; /* Default border */
   --color-bd-strong: #cfc6b4; /* Emphasized border */
 
-  --color-ac: #b8963e; /* Gold accent — CTAs, links */
+  --color-ac: #7a6025; /* Gold accent — CTAs, links */
   --color-ac-fg: #ffffff; /* Text on accent bg */
 }
 
