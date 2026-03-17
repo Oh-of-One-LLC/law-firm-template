@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import HeroImg from "../../assets/hero.jpg";
 ---
 
@@ -40,7 +40,7 @@ import HeroImg from "../../assets/hero.jpg";
           </a>
           <a
             href="/#services"
-            class="text-text-muted hover:text-text focus:ring-brand focus:ring-accent tracking-button flex items-center gap-2 text-sm font-light uppercase transition focus:ring-2 focus:outline-none"
+            class="text-text-muted hover:text-text focus:ring-brand tracking-button flex items-center gap-2 text-sm font-light uppercase transition focus:ring-2 focus:outline-none"
           >
             Our Practice Areas <span aria-hidden="true">&rarr;</span>
           </a>
@@ -50,10 +50,15 @@ import HeroImg from "../../assets/hero.jpg";
 
     <!-- Right: photo panel -->
     <div class="hero-card relative hidden md:block">
-      <Image
+      <Picture
         src={HeroImg}
         alt="Denver business district"
         class="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+        fetchpriority="high"
+        formats={["avif", "webp"]}
+        widths={[640, 960, 1280, 1920]}
+        sizes="60vw"
       />
     </div>
   </div>

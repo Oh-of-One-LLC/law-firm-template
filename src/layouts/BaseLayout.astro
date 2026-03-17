@@ -2,6 +2,10 @@
 import "../styles/global.css";
 import Header from "../components/header.astro";
 import Footer from "../components/footer/footer-with-form.astro";
+import dmSans from "../assets/dm-sans.woff2";
+import dmSansItalic from "../assets/dm-sans-italic.woff2";
+import playfairDisplay from "../assets/playfair-display.woff2";
+import playfairDisplayItalic from "../assets/playfair-display-italic.woff2";
 import { COMPANY_NAME as companyName, PHONE as phone } from "../config";
 
 const menuItems = [
@@ -28,11 +32,27 @@ const { pageTitle = "Mercer & Aldine | Business Law | Denver, CO" } =
       content="Mercer & Aldine advises Denver businesses through their most critical legal decisions — from formation and contracts to M&A and dispute resolution."
     />
     <meta name="theme-color" content="#2C4A35" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href={dmSans} as="font" type="font/woff2" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href={dmSansItalic}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={playfairDisplay}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={playfairDisplayItalic}
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
   </head>
 
