@@ -31,24 +31,66 @@ const { companyName, phone } = Astro.props;
 
         <div class="flex flex-col gap-4">
           <div class="flex items-start gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0 opacity-60" aria-hidden="true">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mt-0.5 shrink-0 opacity-60"
+              aria-hidden="true"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+              ></path><circle cx="12" cy="10" r="3"></circle>
             </svg>
-            <span class="text-brand-fg-muted text-sm font-light">{ADDRESS}</span>
+            <span class="text-brand-fg-muted text-sm font-light">{ADDRESS}</span
+            >
           </div>
           <a
             href={`tel:${phone}`}
-            class="flex items-center gap-3 transition hover:opacity-100 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand focus:outline-none"
+            class="focus:ring-offset-brand flex items-center gap-3 transition hover:opacity-100 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none"
             aria-label={`Call us at ${phone}`}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-60 shrink-0" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="shrink-0 opacity-60"
+              aria-hidden="true"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+              ></path>
             </svg>
             <span class="text-brand-fg-muted text-sm font-light">{phone}</span>
           </a>
           <div class="flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-60 shrink-0" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="shrink-0 opacity-60"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path><polyline points="22,6 12,13 2,6"></polyline>
             </svg>
             <span class="text-brand-fg-muted text-sm font-light">{EMAIL}</span>
           </div>
@@ -68,8 +110,12 @@ const { companyName, phone } = Astro.props;
         >
           <div class="flex flex-col gap-4 sm:flex-row">
             <div class="flex flex-1 flex-col gap-1">
-              <label for="contact-first" class="text-xs font-medium tracking-widest uppercase opacity-80">
-                First Name <span aria-hidden="true" class="text-red-400">*</span>
+              <label
+                for="contact-first"
+                class="text-xs font-medium tracking-widest uppercase opacity-80"
+              >
+                First Name <span aria-hidden="true" class="text-red-400">*</span
+                >
               </label>
               <input
                 type="text"
@@ -83,7 +129,10 @@ const { companyName, phone } = Astro.props;
               />
             </div>
             <div class="flex flex-1 flex-col gap-1">
-              <label for="contact-last" class="text-xs font-medium tracking-widest uppercase opacity-80">
+              <label
+                for="contact-last"
+                class="text-xs font-medium tracking-widest uppercase opacity-80"
+              >
                 Last Name <span aria-hidden="true" class="text-red-400">*</span>
               </label>
               <input
@@ -100,7 +149,10 @@ const { companyName, phone } = Astro.props;
           </div>
 
           <div class="flex flex-col gap-1">
-            <label for="contact-company" class="text-xs font-medium tracking-widest uppercase opacity-80">
+            <label
+              for="contact-company"
+              class="text-xs font-medium tracking-widest uppercase opacity-80"
+            >
               Company
             </label>
             <input
@@ -114,7 +166,10 @@ const { companyName, phone } = Astro.props;
           </div>
 
           <div class="flex flex-col gap-1">
-            <label for="contact-email" class="text-xs font-medium tracking-widest uppercase opacity-80">
+            <label
+              for="contact-email"
+              class="text-xs font-medium tracking-widest uppercase opacity-80"
+            >
               Email <span aria-hidden="true" class="text-red-400">*</span>
             </label>
             <input
@@ -130,13 +185,16 @@ const { companyName, phone } = Astro.props;
           </div>
 
           <div class="flex flex-col gap-1">
-            <label for="contact-matter" class="text-xs font-medium tracking-widest uppercase opacity-80">
+            <label
+              for="contact-matter"
+              class="text-xs font-medium tracking-widest uppercase opacity-80"
+            >
               Matter Type
             </label>
             <select
               id="contact-matter"
               name="matter_type"
-              class="text-brand-fg rounded-sm border border-white/15 bg-brand px-4 py-2.5 text-sm font-light transition focus:border-transparent focus:ring-2 focus:ring-white focus:outline-none"
+              class="text-brand-fg bg-brand rounded-sm border border-white/15 px-4 py-2.5 text-sm font-light transition focus:border-transparent focus:ring-2 focus:ring-white focus:outline-none"
             >
               <option value="">Select a practice area</option>
               <option>Business Formation &amp; Structure</option>
@@ -150,8 +208,14 @@ const { companyName, phone } = Astro.props;
           </div>
 
           <div class="flex flex-col gap-1">
-            <label for="contact-message" class="text-xs font-medium tracking-widest uppercase opacity-80">
-              Tell us about your matter <span aria-hidden="true" class="text-red-400">*</span>
+            <label
+              for="contact-message"
+              class="text-xs font-medium tracking-widest uppercase opacity-80"
+            >
+              Tell us about your matter <span
+                aria-hidden="true"
+                class="text-red-400">*</span
+              >
             </label>
             <textarea
               id="contact-message"
@@ -166,7 +230,7 @@ const { companyName, phone } = Astro.props;
 
           <button
             type="submit"
-            class="mt-2 w-full rounded-sm px-8 py-3 text-sm font-medium tracking-widest uppercase transition hover:opacity-90 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand focus:outline-none sm:w-fit"
+            class="focus:ring-offset-brand mt-2 w-full rounded-sm px-8 py-3 text-sm font-medium tracking-widest uppercase transition hover:opacity-90 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none sm:w-fit"
             style="background: var(--color-ac); color: #fff;"
           >
             Request Consultation
@@ -175,11 +239,11 @@ const { companyName, phone } = Astro.props;
           <p class="text-brand-fg-muted mt-1 text-xs font-light">
             By submitting this form, you agree to our <a
               href="/terms-of-use"
-              class="italic underline-offset-2 transition hover:opacity-100 hover:underline focus:ring-2 focus:ring-white focus:ring-offset-brand focus:outline-none"
+              class="focus:ring-offset-brand italic underline-offset-2 transition hover:underline hover:opacity-100 focus:ring-2 focus:ring-white focus:outline-none"
               >Terms of Use</a
             > and <a
               href="/privacy-policy"
-              class="italic underline-offset-2 transition hover:opacity-100 hover:underline focus:ring-2 focus:ring-white focus:ring-offset-brand focus:outline-none"
+              class="focus:ring-offset-brand italic underline-offset-2 transition hover:underline hover:opacity-100 focus:ring-2 focus:ring-white focus:outline-none"
               >Privacy Policy</a
             >.
           </p>
@@ -198,14 +262,14 @@ const { companyName, phone } = Astro.props;
         <li>
           <a
             href="/privacy-policy"
-            class="text-brand-fg-muted text-sm transition hover:text-brand-fg focus:ring-2 focus:ring-white focus:ring-offset-brand focus:outline-none"
+            class="text-brand-fg-muted hover:text-brand-fg focus:ring-offset-brand text-sm transition focus:ring-2 focus:ring-white focus:outline-none"
             >Privacy Policy</a
           >
         </li>
         <li>
           <a
             href="/terms-of-use"
-            class="text-brand-fg-muted text-sm transition hover:text-brand-fg focus:ring-2 focus:ring-white focus:ring-offset-brand focus:outline-none"
+            class="text-brand-fg-muted hover:text-brand-fg focus:ring-offset-brand text-sm transition focus:ring-2 focus:ring-white focus:outline-none"
             >Terms of Use</a
           >
         </li>

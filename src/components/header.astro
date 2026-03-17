@@ -26,15 +26,17 @@ const { menuItems, logo } = Astro.props;
       class="focus:ring-offset-brand text-lg font-semibold tracking-wide transition-all focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none lg:text-xl"
       style="font-family: var(--font-display); color: var(--color-brand-fg);"
     >
-      {typeof logo === "string" && logo.includes(" & ") ? (
-        <>
-          {logo.split(" & ")[0]}
-          <span style="color: var(--color-ac);"> &amp; </span>
-          {logo.split(" & ")[1]}
-        </>
-      ) : (
-        logo
-      )}
+      {
+        typeof logo === "string" && logo.includes(" & ") ? (
+          <>
+            {logo.split(" & ")[0]}
+            <span style="color: var(--color-ac);"> &amp; </span>
+            {logo.split(" & ")[1]}
+          </>
+        ) : (
+          logo
+        )
+      }
     </a>
     <!-- Desktop Nav -->
     <nav class="hidden items-center gap-8 text-base font-medium md:flex">
@@ -43,7 +45,7 @@ const { menuItems, logo } = Astro.props;
           item.cta ? (
             <a
               href={item.href}
-              class="focus:ring-offset-brand rounded-sm px-5 py-2 text-sm font-medium tracking-wide uppercase transition-all focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none hover:opacity-90"
+              class="focus:ring-offset-brand rounded-sm px-5 py-2 text-sm font-medium tracking-wide uppercase transition-all hover:opacity-90 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:outline-none"
               style="background: var(--color-ac); color: #fff; letter-spacing: 0.06em;"
             >
               {item.name}
@@ -55,7 +57,7 @@ const { menuItems, logo } = Astro.props;
             >
               {item.name}
             </a>
-          )
+          ),
         )
       }
     </nav>

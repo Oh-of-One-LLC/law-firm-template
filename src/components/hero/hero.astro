@@ -1,76 +1,60 @@
 ---
-import { stats } from "./config";
+import { Image } from "astro:assets";
+import HeroImg from "../../assets/hero.jpg";
 ---
 
-<section class="bg-surface relative min-h-screen overflow-hidden">
-  <!-- pt-12 clears the fixed header; the inner grid owns the remaining vertical padding -->
-  <!-- z-10: keeps text above any background decoration placed inside the section -->
-  <div
-    class="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-12 px-8 py-20 md:grid-cols-2 md:items-center md:py-28 lg:px-12"
-  >
-    <!-- Left: text content -->
-    <div class="hero-content flex flex-col gap-6">
-      <p
-        class="hero-eyebrow text-accent flex items-center gap-3 text-xs font-medium tracking-widest uppercase"
-      >
-        <span class="bg-accent inline-block h-px w-8"></span>
-        Business Law &middot; Denver, Colorado
-      </p>
-
-      <h1
-        class="hero-heading font-display text-text text-4xl leading-tight font-bold tracking-tight md:text-5xl lg:text-6xl"
-      >
-        Counsel built for <em class="text-accent">business,</em>
-        not bureaucracy.
-      </h1>
-
-      <p
-        class="hero-desc text-text-muted max-w-lg text-base leading-relaxed font-light md:text-lg"
-      >
-        Mercer &amp; Aldine advises Denver businesses through their most
-        critical legal decisions — from formation and contracts to M&amp;A and
-        dispute resolution. Straightforward counsel. No billable-hour surprises.
-      </p>
-
-      <div class="hero-actions flex flex-wrap items-center gap-4 pt-2">
-        <a
-          href="/#call"
-          class="bg-brand text-brand-fg focus:ring-brand focus:ring-offset-surface tracking-button rounded-sm px-8 py-4 text-sm font-medium uppercase transition hover:opacity-90 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+<section class="relative min-h-screen overflow-hidden">
+  <div class="grid min-h-screen grid-cols-1 md:grid-cols-[2fr_3fr]">
+    <!-- Left: brand panel — hero-panel handles the diagonal clip into the photo column -->
+    <div class="hero-panel relative z-10 flex flex-col px-12 py-12 lg:px-16">
+      <div class="flex max-w-md flex-col gap-6 md:pt-20">
+        <p
+          class="hero-eyebrow text-accent flex items-center gap-3 text-xs font-medium tracking-widest uppercase"
         >
-          Schedule a Consultation
-        </a>
-        <a
-          href="/#services"
-          class="text-text-muted hover:text-text focus:ring-brand tracking-button flex items-center gap-2 text-sm font-light uppercase transition focus:ring-2 focus:outline-none"
+          <span class="bg-accent inline-block h-px w-8"></span>
+          Business Law &middot; Denver, Colorado
+        </p>
+
+        <h1
+          class="hero-heading font-display text-text text-4xl leading-tight font-bold tracking-tight md:text-5xl lg:text-6xl"
         >
-          Our Practice Areas <span aria-hidden="true">&rarr;</span>
-        </a>
+          Counsel built for <em class="text-accent">business,</em>
+          not bureaucracy.
+        </h1>
+
+        <p
+          class="hero-desc text-muted text-base leading-relaxed font-light md:text-lg"
+        >
+          Mercer &amp; Aldine advises Denver businesses through their most
+          critical legal decisions — from formation and contracts to M&amp;A and
+          dispute resolution. Straightforward counsel. No billable-hour
+          surprises.
+        </p>
+
+        <div class="hero-actions flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/#call"
+            class="bg-brand text-brand-fg focus:ring-brand focus:ring-offset-brand tracking-button rounded-sm px-8 py-4 text-sm font-medium uppercase transition hover:opacity-90 focus:ring-2 focus:ring-offset-2 focus:outline-none"
+          >
+            Schedule a Consultation
+          </a>
+          <a
+            href="/#services"
+            class="text-text-muted hover:text-text focus:ring-brand focus:ring-accent tracking-button flex items-center gap-2 text-sm font-light uppercase transition focus:ring-2 focus:outline-none"
+          >
+            Our Practice Areas <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
       </div>
     </div>
 
-    <!-- Right: stat card -->
-    <div class="hero-card hidden justify-center md:flex">
-      <div
-        class="border-border bg-background w-full max-w-sm rounded-sm border p-12 shadow-lg"
-      >
-        {
-          stats.map((s, i) => (
-            <div
-              class:list={[
-                "pb-8",
-                i < stats.length - 1 && "border-border mb-8 border-b",
-              ]}
-            >
-              <p class="font-display text-accent text-stat mb-2 leading-none font-semibold">
-                {s.value}
-              </p>
-              <p class="text-text-muted text-sm font-light tracking-[0.04em]">
-                {s.label}
-              </p>
-            </div>
-          ))
-        }
-      </div>
+    <!-- Right: photo panel -->
+    <div class="hero-card relative hidden md:block">
+      <Image
+        src={HeroImg}
+        alt="Denver business district"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
     </div>
   </div>
 </section>
